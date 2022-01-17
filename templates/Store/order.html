@@ -1,0 +1,59 @@
+{%extends 'partial/base.html'%}
+{%block title%}order products{%endblock%}
+{%load crispy_forms_tags%}
+{%block content%}
+{%include 'partial/nav.html' %}
+<div class='container-fluid'>
+    <div class='row mt-5 pt3'>
+      <div class='col-3 d-none d-lg-block d-md-block d-sm-block'>  
+        <center>
+          <h3>KNUST OBS CAMPUS</h3>
+          <hr>
+          <p>You can contact us directly to order our products</p>
+          <h3>CONTACTS</h3>
+          Phone: 0246027872<br>
+          WhatsApp: 0246027872<br>
+          Email: aliarafatyassin@gmail.com 
+        <hr>
+        <small>
+            Contact us for any IPhone<br>
+            product. Thank You.<br>
+            ShaBri For You
+        </small>
+        </center>   
+      </div> 
+      <div class='col'>
+        <div class='row'>
+            <div class='d-block d-lg-block d-md-block col'>
+                <center><h3>KUDUS APPLE HUB</h3>
+                <hr>
+                <h3>{{st.productname}}</h3>
+                <img src="{{st.p_image.url}} "id='covv' height='350px'>
+                <p>{{st.descriptions}}</center>
+            </div> 
+            <div class='col mb-6'>
+                <center>
+                    <h3>Make Order Here</h3>
+                    <hr>
+                    <div class=''>
+                      <form method='POST'>
+                          <center>
+                          {% csrf_token %}
+                          {{ ode|crispy}}
+                          <br>
+                          <input class='btn btn-dark btn-block' type='submit' value='Order'>
+                      </form>
+                    </div>
+                    <div class=''>
+                      <hr>
+                      <h3>Or</h3>
+                      Make order via whatsapp :<br>
+                      0246027872
+                    </div>
+                </center>
+            </div> 
+        </div>
+      </div> 
+    </div>  
+</div>
+{%endblock%}

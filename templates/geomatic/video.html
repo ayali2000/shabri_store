@@ -1,0 +1,60 @@
+{%extends 'partial/base.html'%}
+{%block content%}
+{%include 'partial/nav.html'%}
+<div class='container-fluid'>
+    <div class='card'>
+        <div class='row 'id=''>
+            <div class='col-3 d-none d-lg-block d-md-block' id='classbody'>
+                <div class='card'id='classbody'>
+                    <center>
+                        <div class='my-4'>
+                            <img class='gmi' src="/media/Untitled-12.jpg" alt='logo' id'img123' height='100px' width='100px'>
+                        </div>
+                        <div class='card col-7 justify-center' id='sizing'>
+                            <div class='col'>
+                                <div class='card-header '><a class='nav-link text-black' href="{%url 'level_100'%}">Documents</a>
+                                </div>
+                                <div class='card-header '><a class='nav-link text-black' href="{%url 'software'%}">Softwares</a>
+                                </div>
+                                <div class='card-header '><a class='nav-link text-black' href="{%url 'video' %}">Videos</a>
+                                </div>
+                                <div class='card-header '><a class='nav-link text-black'  href="#">All Members</a>
+                                </div>
+                            </div>
+                        </div>
+                    </center>
+                </div>
+            </div>
+            <div class='col' id='geomaticbody'>
+                <div class=' containe'>
+                    <div class='row'>
+                        {%if not query%}
+                        {%for video in vid%}
+                        <div class='d-block col-lg-6 mt-1' id='covv'>
+                            <video class='w-100' id='covv' height='300px' controls>
+                              <source src="{{video.video_file.url}}" type='video/mp4'>
+                            </video>
+                          </div><br>
+                        {%endfor%}
+                        {%elif query%}
+                        {%if results%}
+                        {%for search in results%}
+                        <div class='d-block col-lg-6 mt-1' id='covv'>
+                            <video class='w-100' id='covv' height='300px' controls>
+                              <source src="{{video.video_file.url}}" type='video/mp4'>
+                            </video>
+                        </div><br>
+                        {%endfor%}
+                        {%else%}
+                        <div class='alert alert-info'>
+                            no videos match your results
+                        </div>
+                        {%endif%}
+                        {%endif%}
+                    </div>  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}

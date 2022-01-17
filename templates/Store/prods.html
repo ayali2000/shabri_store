@@ -1,0 +1,155 @@
+{%extends 'partial/base.html'%}
+{%block title%}products{%endblock%}
+{%block content%}
+{%include 'partial/heading.html'%}
+{%include 'partial/nav.html'%}
+<div class='container mt-3 mb-4'>
+    <div class='d-block d-lg-none d-md-none mt-5'>
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner mt-5">
+                <div class="carousel-item active"id='carousel'>
+                    <img src="media/Untitled-12.jpg" class="d-block w-100" alt="..." height='200' id='covv'>
+                    <div class="carousel-caption">
+                    <h5>First slide label</h5>
+                    <p>Some representative placeholder content for the first slide.</p>
+                    </div>
+                </div>
+                <div class="carousel-item"id='carousel'>
+                    <img src="media/Untitled-12.jpg" class="d-block w-100" alt="..." height='200' id='covv'>
+                    <div class="carousel-caption">
+                    <h5>Second slide label</h5>
+                    <p>Some representative placeholder content for the second slide.</p>
+                    </div>
+                </div>
+                <div class="carousel-item"id='carousel'>
+                    <img src="media/Untitled-12.jpg" class="d-block w-100" alt="..." height='200' id='covv'>
+                    <div class="carousel-caption">
+                    <h5>Third slide label</h5>
+                    <p>Some representative placeholder content for the third slide.</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+    <div class='row'>
+            {% if not query%}
+            {%for prods in prods%}
+                <div class='col-lg-3'>
+                        <div class="mg-4 my-2 shadow">
+                             <img class='w-100' src="{{prods.p_image.url}}" alt="" height='300px' id='covv'>
+                            <div class='row'>
+                                <div class='col pr-6'>
+                                    <a class="btn bg-secondary dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <small>Details</small>
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="#">Nmae: {{prods.productname}}</a></li>
+                                        <li><a class="dropdown-item" href="#">Price: <strong>GHS</strong> {{prods.price}}</a></li>
+                                        <li><a class="dropdown-item" href="#">Description: {{prods.descriptions}}</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="btn bg-primary dropdown-item text-center text-white text-opacity-100" href="{%url 'order' prods.pk%}">Order</a></li>
+                                    </ul>  
+                                </div>
+                                <div class='col'>
+                                    <strong>GHS</strong> {{prods.price}}
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            {%endfor%}
+            {%else%}
+                {%if query%}
+                    {%if results%}
+                            {%for item in results%}
+                            <div class='col-lg-3'>
+                                <div class="w-100">
+                                    <div class="shadow">
+                                    <a href=""class="btn btn-white">
+                                        <img class='w-100' src="{{item.p_image.url}}" alt="" height='200px' id='covv'>
+                                        <div class='row'>
+                                            <div class='col pr-6'>
+                                                <a class="btn bg-secondary dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <small>Details</small>
+                                                </a>
+                                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                    <li><a class="dropdown-item" href="{% url 'order' item.pk%}">{{item.productname}}</a></li>
+                                                    <li><a class="dropdown-item" href="{% url 'order' item.pk%}">Price: </a></li>
+                                                    <li><a class="dropdown-item" href="{% url 'order' item.pk%}"><strong>GHS</strong> {{item.price}}</a></li>
+                                                    <li><a class="dropdown-item" href="{% url 'order' item.pk%}">{{prods.descriptions}}</a></li>
+                                                    <li><hr class="dropdown-divider"></li>
+                                                    <li><a class="btn bg-primary dropdown-item text-center text-white text-opacity-100" href="{% url 'order' item.pk%}">Order</a></li>
+                                                </ul>  
+                                            </div>
+                                            <div class='col'>
+                                                <strong>GHS</strong> {{item.price}}
+                                            </div>
+                                        </div>
+                                    </a>
+                                    </div>
+                                </div>
+                            </div>
+                            {%endfor%}
+                        </ul>
+                    {%else%}
+                    <div class='col col-lg-5 mb-4 offset-lg-5'>
+                        <div class="w-100 h-50">
+                            <div class="alert alert-info">
+                               Your search wasnt found. Try another kewords
+                            </div>
+                        </div>
+                    </div>   
+                    {%endif%}
+                {%endif%}
+           {%endif%}        
+    </div>
+</div>
+<div class='row d-block d-lg-none d-md-none d-sm-none bg-grey my-2 mx-2 shadow'>
+    <center>
+        <div class='col align-self-center mb-8' style='height: 250px;'>
+            <br>
+            <p><strong>Contact</strong><br>
+                <small>
+                    Phone: 0246027872<br>
+                    WhatsApp: 0246027872<br>
+                    Email: aliarafatyassin@gmail.com 
+                </small>
+                <hr>
+                <small>
+                    Contact us for any IPhone<br>
+                    product. Thank You.<br>
+                    ShaBri For You
+                </small>
+            </p>
+            <br>
+            <br>
+        </div>
+    </center>    
+</div>
+<div class='d-block d-lg-none d-md-none'>
+    <nav class="navbar navbar-light bg-info fixed-bottom shadow">
+        <div class="container-fluid">
+            <div class='row row-cols-4'>
+                <div class='col'>
+                <center>
+                  <a class="navbar-brand" href="#">Contact me on 0246027872</a>
+                </center>
+                </div>
+            </center>
+            </div>
+        </div>
+    </nav>
+</div>
+{%endblock%}

@@ -1,0 +1,61 @@
+/*blogger css files*/
+#omg1234{
+    border-radius: 35px;   
+}
+
+.img-fluid{
+    width: 100vw;
+} 
+#card123{
+    object-fit: cover;
+}
+#navbg{
+    background-color: navy;
+}
+
+#detailist{
+    height: 91vh;
+    overflow-y: scroll;
+    overflow-y: auto;
+}
+
+#covv{
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+
+/* Store css files*/
+#carousel{
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+#headstyle{
+    font-style: italic;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: larger;
+    font-weight: 300;
+}
+
+
+/*Geomatic css files*/
+.gmi{
+    object-fit: cover;
+    border-radius: 50px;
+}
+#geomaticbody{
+    height: 91vh;
+    overflow-y: scroll;
+    overflow-y: auto;
+}
+
+
+#classbody{
+    background-color: navy;
+}
+
+/*Users css files*/
+#butt{
+    justify-self: end;
+}

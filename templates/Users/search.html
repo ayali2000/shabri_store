@@ -1,0 +1,17 @@
+{% extends 'partial/base.html'%}
+{%load widget_tweaks%}
+{%load crispy_forms_tags%}
+{%block content%}
+{%include 'partial/nav.html'%}
+{% if query%}
+    {%if result%}
+        <ul>
+            {%for item in resulst%}
+             <li>{{item|escape}}</li>
+            {%endfor%}
+         </ul>
+            {%else%}
+        <p>not fount</p>
+    {%endif%}
+{%endif%}
+{%endblock%}

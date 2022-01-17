@@ -1,0 +1,36 @@
+{% extends 'partial/base.html'%}
+{%block title%}login{%endblock%}
+{%load widget_tweaks%}
+{%load crispy_forms_tags%}
+{%block content%}
+{%include 'partial/nav.html'%}
+    <div class='cov'>
+        <div class='row mt-5 pt3'>
+          <div class='col-lg-3 col-md-5 col-sm-7 offset-md-3 offset-lg-6 offset-sm-2'>
+            <div class='card w-100 bg-transparent my-6 shadow'>
+              <div class='card-body'>
+                <h3><center>login</h3></center>
+                <hr>
+                <form method='POST'>
+                  <center>
+                  {% csrf_token %}
+                  {%render_field form.username class='form-control' placeholder='username'%}<br>
+                  {%render_field form.password class='form-control' placeholder='password'%}<br>
+                  <input class='btn btn-success btn-block' type='submit' value='login'><br>
+                  <center><a href="#">forggot password ?</a></center>
+                  <hr>
+                  <a class="btn btn-success " href="{%url 'sign_up'%}">Sign Up</a>
+                  </center>
+                </form> 
+              </div> 
+            </div> 
+          </div> 
+        </div>  
+    </div>
+{% endblock %}    
+
+
+
+
+
+
