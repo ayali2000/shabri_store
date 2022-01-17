@@ -29,7 +29,7 @@ SECRET_KEY = secretes.SECRET_KEY
 DEBUG = False
 ABC=True
 
-ALLOWED_HOSTS = ['*',"shabri.herokuapp.com/"]
+ALLOWED_HOSTS = ['*',"https://shabri.herokuapp.com/"]
 
 
 # Application definition
