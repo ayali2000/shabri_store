@@ -12,7 +12,8 @@ https://docs.djangoproject.com/en/4.0/ref/sensetings/
 
 from pathlib import Path
 import os
-import sense
+import environ
+environ.Env.read_env()
 from os import getenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -23,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = sense.SECRET_KEY
+SECRET_KEY =os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -87,11 +88,11 @@ WSGI_APPLICATION = 'newstore.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': sense.NAME,
-        'USER': sense.USER,
-        'PASSWORD': sense.PASSWORD,
-        'HOST': sense.HOST,
-        'PORT': sense.PORT,
+        'NAME':os.environ['NAME'],
+        'USER':os.environ['USER'],
+        'PASSWORD':os.environ['PASSWORD'],
+        'HOST':os.environ['HOST'],
+        'PORT':os.environ['PORT'],
     }
 }
 
