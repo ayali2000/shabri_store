@@ -12,8 +12,6 @@ https://docs.djangoproject.com/en/4.0/ref/sensetings/
 
 from pathlib import Path
 import os
-import environ
-environ.Env.read_env()
 from os import getenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
