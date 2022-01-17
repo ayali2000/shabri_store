@@ -13,7 +13,6 @@ import django_heroku
 from pathlib import Path
 import os
 from os import getenv
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -86,11 +85,11 @@ WSGI_APPLICATION = 'newstore.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME':os.environ['NAME'],
-        'USER':os.environ['USER'],
-        'PASSWORD':os.environ['PASSWORD'],
-        'HOST':os.environ['HOST'],
-        'PORT':os.environ['PORT'],
+        'NAME':os.getenv['NAME'],
+        'USER':os.getenv['USER'],
+        'PASSWORD':os.getenv['PASSWORD'],
+        'HOST':os.getenv['HOST'],
+        'PORT':os.getenv['PORT'],
     }
 }
 
