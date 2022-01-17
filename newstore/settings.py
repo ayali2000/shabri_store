@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.0/topics/sensetings/
 For the full list of sensetings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/sensetings/
 """
-
+import django_heroku
 from pathlib import Path
 import os
 from os import getenv
@@ -144,3 +144,4 @@ STATICFILE_DIRS=os.path.join(BASE_DIR, 'static')
 # https://docs.djangoproject.com/en/4.0/ref/sensetings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+django_heroku.settings(locals())

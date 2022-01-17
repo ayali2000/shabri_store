@@ -1,1 +1,1 @@
-web: gunicorn shabri.wsgi --log-file -
+web: gunicorn shabri.wsgi
