@@ -12,8 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/sensetings/
 import django_heroku
 from pathlib import Path
 import os
-from os import getenv
-from sec import *
+import geomatic.sec as sec
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -22,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY =SECRET_KEY
+SECRET_KEY =sec.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -86,11 +85,11 @@ WSGI_APPLICATION = 'newstore.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME':NAME,
-        'USER':USER,
-        'PASSWORD':PASSWORD,
-        'HOST':HOST,
-        'PORT':PORT,
+        'NAME':sec.NAME,
+        'USER':sec.USER,
+        'PASSWORD':sec.PASSWORD,
+        'HOST':sec.HOST,
+        'PORT':sec.PORT,
     }
 }
 
