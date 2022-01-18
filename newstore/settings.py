@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/sensetings/
 import django_heroku
 from pathlib import Path
 import os
-import geomatic.sec as sec
+from geomatic import sec
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
