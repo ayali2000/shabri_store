@@ -12,19 +12,17 @@ https://docs.djangoproject.com/en/4.0/ref/sensetings/
 import django_heroku
 from pathlib import Path
 import os
-from geomatic import sec
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development sensetings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY =sec.SECRET_KEY
+SECRET_KEY = 'django-insecure-jzmh+hyicsgjh9=m&twyv!^t)!ul!uw2!($et303^%-^bhaf5g'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 ABC=True
 
 ALLOWED_HOSTS = ['*',"https://shabri.herokuapp.com/"]
@@ -57,7 +55,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
+ 
 ROOT_URLCONF = 'newstore.urls'
 
 TEMPLATES = [
@@ -85,11 +83,11 @@ WSGI_APPLICATION = 'newstore.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME':sec.NAME,
-        'USER':sec.USER,
-        'PASSWORD':sec.PASSWORD,
-        'HOST':sec.HOST,
-        'PORT':sec.PORT,
+        'NAME':'newstore',
+        'USER':'postgres',
+        'PASSWORD':'django2heroku0github00',
+        'HOST':'localhost',
+        'PORT':'5432',
     }
 }
 
