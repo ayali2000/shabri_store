@@ -9,25 +9,27 @@ https://docs.djangoproject.com/en/4.0/topics/sensetings/
 For the full list of sensetings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/sensetings/
 """
-import django_heroku
+
 from pathlib import Path
 import os
-from boto.s3.connection import S3Connection
-s3 = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
+import environ 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+env=environ.Env(SECRET_KEY=str,)
+environ.Env.read_env(os.path.join(BASE_DIR,'.env'))
 
 # Quick-start development sensetings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = S3Connection(os.environ['S3_KEY'])
+SECRET_KEY=env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 ABC=True
 
-ALLOWED_HOSTS = ['*',"https://shabri.herokuapp.com/"]
+ALLOWED_HOSTS=['127.0.0.1','*',"https://shabri.herokuapp.com/"]
 
 
 # Application definition
@@ -85,11 +87,11 @@ WSGI_APPLICATION = 'newstore.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.getenv('NAME'),
-        'USER': os.getenv('USER'),
-        'PASSWORD': os.getenv('PASSWORD'),
-        'HOST': os.getenv('HOST'),
-        'PORT': '5432'
+        'NAME': env("NAME"),
+        'USER': env("USER"),
+        'PASSWORD': env("PASSWORD"),
+        'HOST': env("HOST"),
+        'PORT': env("PORT")
     }
 }
 
@@ -131,8 +133,8 @@ USE_TZ = True
 LOGOUT_URL='logout'
 LOGIN_REDIRECT_URL='Store'
 LOGIN_URL='login'
-STATIC_URL = 'static/'
-MEDIA_URL = 'media/'
+STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
 MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
 STATIC_ROOT=os.path.join(BASE_DIR, 'static')
 STATICFILE_DIRS=os.path.join(BASE_DIR, 'static')
@@ -143,4 +145,3 @@ STATICFILE_DIRS=os.path.join(BASE_DIR, 'static')
 # https://docs.djangoproject.com/en/4.0/ref/sensetings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-django_heroku.settings(locals())
